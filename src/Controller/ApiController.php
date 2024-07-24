@@ -58,10 +58,10 @@ class ApiController extends AbstractController
         $sig = $wx->getJSSignature($ticket, $nonce, $timestamp, $url);
 
         $data = [
-            'appId' = $_ENV['WX_APP_ID'],
-            'timestamp' = $timestamp,
-            'nonceStr' = $nonce,
-            'signature' = $sig,
+            'appId' => $_ENV['WX_APP_ID'],
+            'timestamp' => $timestamp,
+            'nonceStr' => $nonce,
+            'signature' => $sig,
         ];
 
         return $this->json($data);
