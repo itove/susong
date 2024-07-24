@@ -47,6 +47,9 @@ class ApiController extends AbstractController
     #[Route(path: '/wxconfig', name: 'api_wx_config', methods: ['GET'])]
     public function wxConfig(Wx $wx)
     {
+        $this->appid = $_ENV['WX_APP_ID'];
+        $this->secret = $_ENV['WX_APP_SECRET'];
+
         $nonce = '123';
         $timestamp = '234';
         $ticket = $wx->getJSTicket();
@@ -55,7 +58,7 @@ class ApiController extends AbstractController
         $sig = $wx->getJSSignature($ticket, $nonce, $timestamp, $url);
 
         $data = [
-            'appId' = '',
+            'appId' = $_ENV['WX_APP_ID'],
             'timestamp' = $timestamp,
             'nonceStr' = $nonce,
             'signature' = $sig,
