@@ -53,7 +53,7 @@ class ApiController extends AbstractController
         $nonce = '123';
         $timestamp = (new \DateTimeImmutable())->getTimestamp();
         $ticket = $wx->getJSTicket();
-        $url = 'http://10.0.0.100:10086';
+        $url = 'https://susong.itove.com';
 
         $sig = $wx->getJSSignature($ticket, $nonce, $timestamp, $url);
 
