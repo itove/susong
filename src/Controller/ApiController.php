@@ -51,9 +51,9 @@ class ApiController extends AbstractController
         $this->secret = $_ENV['WX_APP_SECRET'];
 
         $nonce = '123';
-        $timestamp = '234';
+        $timestamp = (new \DateTimeImmutable())->getTimestamp();
         $ticket = $wx->getJSTicket();
-        $url = 'https://url.com';
+        $url = 'http://10.0.0.100:10086';
 
         $sig = $wx->getJSSignature($ticket, $nonce, $timestamp, $url);
 
